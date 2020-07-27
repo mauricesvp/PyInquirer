@@ -21,7 +21,7 @@ def prompt(questions, answers=None, **kwargs):
     true_color = kwargs.pop('true_color', False)
     refresh_interval = kwargs.pop('refresh_interval', 0)
     kbi_msg = kwargs.pop('keyboard_interrupt_msg', 'Cancelled by user')
-    raise_kbi = kwargs.pop('raise_keyboard_interrupt', False)
+    raise_kbi = kwargs.pop('raise_keyboard_interrupt', True)
 
     for question in questions:
         # import the question
