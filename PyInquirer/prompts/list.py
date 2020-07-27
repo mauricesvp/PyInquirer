@@ -155,7 +155,27 @@ def question(message, **kwargs):
                 ic.choices[ic.selected_option_index][2]:
             _next()
 
+    @kb.add('j', eager=True)
+    def move_cursor_down(event):
+        def _next():
+            ic.selected_option_index = (
+                (ic.selected_option_index + 1) % ic.choice_count)
+        _next()
+        while isinstance(ic.choices[ic.selected_option_index][0], Separator) or\
+                ic.choices[ic.selected_option_index][2]:
+            _next()
+
     @kb.add('up', eager=True)
+    def move_cursor_up(event):
+        def _prev():
+            ic.selected_option_index = (
+                (ic.selected_option_index - 1) % ic.choice_count)
+        _prev()
+        while isinstance(ic.choices[ic.selected_option_index][0], Separator) or \
+                ic.choices[ic.selected_option_index][2]:
+            _prev()
+
+    @kb.add('k', eager=True)
     def move_cursor_up(event):
         def _prev():
             ic.selected_option_index = (
